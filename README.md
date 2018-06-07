@@ -1,1 +1,1 @@
-# aws_pnda_pico_centos
+# aws_pnda_pico_rhel

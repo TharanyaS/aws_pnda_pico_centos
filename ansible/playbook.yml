@@ -1,0 +1,46 @@
+---
+  - hosts: all
+    become: yes
+    gather_facts: false
+    tasks:
+      - name: wait for connection 600 seconds
+        wait_for_connection:
+
+      - name: Gathering facts
+        setup:
+      - name: adding PNDA nodes ip in /etc/hosts file
+        lineinfile:
+          path: /etc/hosts
+          line: "{{ item }}"
+          insertafter: EOF
+        with_items:
+          -  "{{edge_ip}} {{edge}}"
+          -  "{{mgr1_ip}} {{mgr1}}"
+          -  "{{kafka_ip}} {{kafka}}"
+          -  "{{mgr1_ip}} {{mgr1domain}}"
+      - name: Changing password of VNC machine
+        shell: echo pnda | /usr/bin/vncpasswd -f > /opt/netspectrum/aws/ubuntu-desktop/passwd
+  
+
+  - hosts: all
+    gather_facts: false
+    tasks:
+      - copy:
+          src: "{{ playbook_dir }}/login_help.txt"
+          dest: "/home/{{ ansible_user }}/"
+
+      - name: Creating upstart directory
+        file: path="/home/{{ ansible_user }}/.config/upstart" state=directory
+
+      - name: Creating upstart file for firefox
+        file: path="/home/{{ ansible_user }}/.config/upstart/firefox-with-url.conf" state=touch
+
+
+      - name: Settings to launch firefox at launch
+        blockinfile:
+          path: /home/{{ ansible_user }}/.config/upstart/firefox-with-url.conf
+          block: |
+            start on desktop-start
+            stop on desktop-end
+            exec firefox http://{{edge}} /home/{{ansible_user}}/login_help.txt
+   

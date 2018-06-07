@@ -1,0 +1,11 @@
+{
+    "PR_FS_TYPE": "local",
+    "PR_FS_LOCATION_PATH": "/opt/pnda/packages",
+    "HADOOP_DISTRO": "HDP",
+    "REJECT_OUTBOUND": "NO",
+    "PNDA_INTERNAL_NETWORK": "ens3",
+    "PNDA_INGEST_NETWORK": "ens3",
+    "ADD_ONLINE_REPOS": "YES",
+    "PLATFORM_GIT_REPO_URI": "https://github.com/boopalans/platform-salt.git"
+}
+

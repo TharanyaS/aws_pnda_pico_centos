@@ -1,0 +1,11 @@
+For console: 
+username: pnda
+password: pnda
+
+For Ambari:
+username: admin
+password: admin
+
+For grafana:
+username: pnda
+password: pnda
