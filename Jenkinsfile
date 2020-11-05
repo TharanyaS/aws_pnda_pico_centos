@@ -19,6 +19,7 @@ pipeline {
 		}
 	        steps {
 			echo "Hello"
+			echo "Not in master branch"
 		}
 	    }
 	    stage('Four') {
