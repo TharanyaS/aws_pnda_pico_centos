@@ -8,6 +8,7 @@ pipeline {
 	    }
 	    stage('Two') {
 		steps {
+			echo "I am in feature branch"
 			sh "python3 output.py"
 		}
 	    }
