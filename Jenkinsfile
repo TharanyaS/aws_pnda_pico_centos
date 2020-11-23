@@ -8,7 +8,7 @@ pipeline {
 	    }
 	    stage('Two') {
 		steps {
-			input('Do you want to proceed?')
+			sh 'git checkout feature/test-jenkins-pipeline'
 		}
 	    }
 	    stage('Three') {
