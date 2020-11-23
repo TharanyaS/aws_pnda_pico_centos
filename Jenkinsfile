@@ -8,6 +8,7 @@ pipeline {
 	    }
 	    stage('Two') {
 		steps {
+			echo "Hey bud, I am in master"
 			sh 'git checkout feature/test-jenkins-pipeline'
 		}
 	    }
