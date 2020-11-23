@@ -8,7 +8,7 @@ pipeline {
 	    }
 	    stage('Two') {
 		steps {
-			input('Do you want to proceed?')
+			sh "python3 output.py"
 		}
 	    }
 	    stage('Three') {
